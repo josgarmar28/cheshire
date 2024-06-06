@@ -16,9 +16,7 @@
 
 package cheshire;
 
+/** mirrors liburing's C API */
 public final class liburing {
-  private liburing() {
-    io_uring_get_sqe$handle();
-  }
-
+  private liburing() {}
 }
