@@ -34,3 +34,4 @@ autoScalaLibrary := false
 javacOptions ++= Seq("--enable-preview", "--release", "22")
 Compile / compileOrder := CompileOrder.JavaThenScala
 Compile / doc / javacOptions -= "-Xlint:all"
+Test / doc / javacOptions -= "-Xlint:all"
