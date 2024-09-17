@@ -18,11 +18,11 @@ public final class io_uring_rsrc_update {
 	private static VarHandle offsetVarHandle = layout.varHandle(PathElement.groupElement("offset"));
 
 	public static int getOffset(MemorySegment data) {
-		return (int) offsetVarHandle.get(data);
+		return (int) offsetVarHandle.get(data, 0);
 	};
 
 	public static void setOffset(MemorySegment data, int value) {
-		offsetVarHandle.set(data, value);
+		offsetVarHandle.set(data, 0, value);
 	};
 
 };

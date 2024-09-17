@@ -27,11 +27,8 @@ ThisBuild / githubWorkflowPublishPreamble +=
 
 name := "cheshire"
 
-libraryDependencies ++= Seq(
-  "com.github.sbt" % "junit-interface" % "0.13.3" % Test,
-  "org.junit.jupiter" % "junit-jupiter-api" % "5.8.2" % Test,
-  "org.junit.jupiter" % "junit-jupiter-engine" % "5.8.2" % Test
-)
+libraryDependencies += "com.github.sbt" % "junit-interface" % "0.13.2" % Test
+testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-v")
 
 // Java library
 crossPaths := false
@@ -39,3 +36,4 @@ autoScalaLibrary := false
 javacOptions ++= Seq("--enable-preview", "--release", "22")
 Compile / compileOrder := CompileOrder.JavaThenScala
 Compile / doc / javacOptions -= "-Xlint:all"
+Test / doc / javacOptions -= "-Xlint:all"

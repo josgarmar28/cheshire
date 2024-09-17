@@ -21,27 +21,27 @@ public class io_uring_getevents_arg {
 	private static VarHandle tsVarHandle = layout.varHandle(PathElement.groupElement("ts"));
 
 	public static long getSigmask(MemorySegment data) {
-		return (long) sigmaskVarHandle.get(data);
+		return (long) sigmaskVarHandle.get(data, 0);
 	};
 
 	public static void setSigmask(MemorySegment data, long value) {
-		sigmaskVarHandle.set(data, value);
+		sigmaskVarHandle.set(data, 0, value);
 	};
 
 	public static int getSigmaskSz(MemorySegment data) {
-		return (int) sigmaskSzVarHandle.get(data);
+		return (int) sigmaskSzVarHandle.get(data, 0);
 	};
 
 	public static void setSigmaskSz(MemorySegment data, int value) {
-		sigmaskSzVarHandle.set(data, value);
+		sigmaskSzVarHandle.set(data, 0, value);
 	};
 
 	public static long getTs(MemorySegment data) {
-		return (long) tsVarHandle.get(data);
+		return (long) tsVarHandle.get(data, 0);
 	};
 
 	public static void setTs(MemorySegment data, long value) {
-		tsVarHandle.set(data, value);
+		tsVarHandle.set(data, 0, value);
 	};
 
 };

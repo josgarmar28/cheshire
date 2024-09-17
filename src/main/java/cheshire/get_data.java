@@ -27,51 +27,51 @@ public class get_data {
 	private static VarHandle argVarHandle = layout.varHandle(PathElement.groupElement("arg"));
 
 	public static int getSubmit(MemorySegment data) {
-		return (int) submitVarHandle.get(data);
+		return (int) submitVarHandle.get(data, 0);
 	};
 
 	public static void setSubmit(MemorySegment data, int value) {
-		submitVarHandle.set(data, value);
+		submitVarHandle.set(data, 0, value);
 	};
 
 	public static int getWaitNr(MemorySegment data) {
-		return (int) waitNrVarHandle.get(data);
+		return (int) waitNrVarHandle.get(data, 0);
 	};
 
 	public static void setWaitNr(MemorySegment data, int value) {
-		waitNrVarHandle.set(data, value);
+		waitNrVarHandle.set(data, 0, value);
 	};
 
 	public static int getGetFlags(MemorySegment data) {
-		return (int) getFlagsVarHandle.get(data);
+		return (int) getFlagsVarHandle.get(data, 0);
 	};
 
 	public static void setGetFlags(MemorySegment data, int value) {
-		getFlagsVarHandle.set(data, value);
+		getFlagsVarHandle.set(data, 0, value);
 	};
 
 	public static int getSz(MemorySegment data) {
-		return (int) szVarHandle.get(data);
+		return (int) szVarHandle.get(data, 0);
 	};
 
 	public static void setSz(MemorySegment data, int value) {
-		szVarHandle.set(data, value);
+		szVarHandle.set(data, 0, value);
 	};
 
 	public static int getHasTs(MemorySegment data) {
-		return (int) hasTsVarHandle.get(data);
+		return (int) hasTsVarHandle.get(data, 0);
 	};
 
 	public static void setHasTs(MemorySegment data, int value) {
-		hasTsVarHandle.set(data, value);
+		hasTsVarHandle.set(data, 0, value);
 	};
 
 	public static MemorySegment getArg(MemorySegment data) {
-		return (MemorySegment) argVarHandle.get(data);
+		return (MemorySegment) argVarHandle.get(data, 0);
 	};
 
 	public static void setArg(MemorySegment data, MemorySegment value) {
-		argVarHandle.set(data, value);
+		argVarHandle.set(data, 0, value);
 	};
 
 };

@@ -39,19 +39,19 @@ public final class io_uring_cqe {
 	private static VarHandle resVarHandle = layout.varHandle(PathElement.groupElement("res"));
 
 	public static long getUserData(MemorySegment data) {
-		return (long) userDataVarHandle.get(data);
+		return (long) userDataVarHandle.get(data, 0);
 	};
 
 	public static void setUserData(MemorySegment data, long value) {
-		userDataVarHandle.set(data, value);
+		userDataVarHandle.set(data, 0, value);
 	};
 
 	public static int getRes(MemorySegment data) {
-		return (int) resVarHandle.get(data);
+		return (int) resVarHandle.get(data, 0);
 	};
 
 	public static void setRes(MemorySegment data, int value) {
-		resVarHandle.set(data, value);
+		resVarHandle.set(data, 0, value);
 	};
 
 };

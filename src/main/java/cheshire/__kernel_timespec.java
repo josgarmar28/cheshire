@@ -37,19 +37,19 @@ public class __kernel_timespec {
 	private static VarHandle tvNsecVarHandle = layout.varHandle(PathElement.groupElement("tv_nsec"));
 
 	public static long getTvSec(MemorySegment data) {
-		return (long) tvSecVarHandle.get(data);
+		return (long) tvSecVarHandle.get(data, 0);
 	};
 
 	public static void setTvSec(MemorySegment data, long value) {
-		tvSecVarHandle.set(data, value);
+		tvSecVarHandle.set(data, 0, value);
 	};
 
 	public static long getTvNsec(MemorySegment data) {
-		return (long) tvNsecVarHandle.get(data);
+		return (long) tvNsecVarHandle.get(data, 0);
 	};
 
 	public static void setTvNsec(MemorySegment data, long value) {
-		tvNsecVarHandle.set(data, value);
+		tvNsecVarHandle.set(data, 0, value);
 	};
 
 };

@@ -31,67 +31,67 @@ public final class io_cqring_offsets {
 	private static VarHandle userAddrVarHandle = layout.varHandle(PathElement.groupElement("user_addr"));
 
 	public static int getHead(MemorySegment data) {
-		return (int) headVarHandle.get(data);
+		return (int) headVarHandle.get(data, 0);
 	};
 
 	public static void setHead(MemorySegment data, int value) {
-		headVarHandle.set(data, value);
+		headVarHandle.set(data, 0, value);
 	};
 
 	public static int getTail(MemorySegment data) {
-		return (int) tailVarHandle.get(data);
+		return (int) tailVarHandle.get(data, 0);
 	};
 
 	public static void setTail(MemorySegment data, int value) {
-		tailVarHandle.set(data, value);
+		tailVarHandle.set(data, 0, value);
 	};
 
 	public static int getRingMask(MemorySegment data) {
-		return (int) ringMaskVarHandle.get(data);
+		return (int) ringMaskVarHandle.get(data, 0);
 	};
 
 	public static void setRingMask(MemorySegment data, int value) {
-		ringMaskVarHandle.set(data, value);
+		ringMaskVarHandle.set(data, 0, value);
 	};
 
 	public static int getRingEntries(MemorySegment data) {
-		return (int) ringEntriesVarHandle.get(data);
+		return (int) ringEntriesVarHandle.get(data, 0);
 	};
 
 	public static void setRingEntries(MemorySegment data, int value) {
-		ringEntriesVarHandle.set(data, value);
+		ringEntriesVarHandle.set(data, 0, value);
 	};
 
 	public static int getOverflow(MemorySegment data) {
-		return (int) overflowVarHandle.get(data);
+		return (int) overflowVarHandle.get(data, 0);
 	};
 
 	public static void setOverflow(MemorySegment data, int value) {
-		overflowVarHandle.set(data, value);
+		overflowVarHandle.set(data, 0, value);
 	};
 
 	public static int getCqes(MemorySegment data) {
-		return (int) cqesVarHandle.get(data);
+		return (int) cqesVarHandle.get(data, 0);
 	};
 
 	public static void setCqes(MemorySegment data, int value) {
-		cqesVarHandle.set(data, value);
+		cqesVarHandle.set(data, 0, value);
 	};
 
 	public static int getFlags(MemorySegment data) {
-		return (int) flagsVarHandle.get(data);
+		return (int) flagsVarHandle.get(data, 0);
 	};
 
 	public static void setFlags(MemorySegment data, int value) {
-		flagsVarHandle.set(data, value);
+		flagsVarHandle.set(data, 0, value);
 	};
 
 	public static long getUserAddr(MemorySegment data) {
-		return (long) userAddrVarHandle.get(data);
+		return (long) userAddrVarHandle.get(data, 0);
 	};
 
 	public static void setUserAddr(MemorySegment data, long value) {
-		userAddrVarHandle.set(data, value);
+		userAddrVarHandle.set(data, 0, value);
 	};
 
 };
