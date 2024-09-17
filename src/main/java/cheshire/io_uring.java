@@ -54,43 +54,43 @@ public final class io_uring {
 	};
 
 	public static int getFlags(MemorySegment data) {
-		return (int) flagsVarHandle.get(data);
+		return (int) flagsVarHandle.get(data, 0);
 	};
 
 	public static void setFlags(MemorySegment data, int value) {
-		flagsVarHandle.set(data, value);
+		flagsVarHandle.set(data, 0, value);
 	};
 
 	public static int getRingFd(MemorySegment data) {
-		return (int) ringFdVarHandle.get(data);
+		return (int) ringFdVarHandle.get(data, 0);
 	};
 
 	public static void setRingFd(MemorySegment data, int value) {
-		ringFdVarHandle.set(data, value);
+		ringFdVarHandle.set(data, 0, value);
 	};
 
 	public static int getFeatures(MemorySegment data) {
-		return (int) featuresVarHandle.get(data);
+		return (int) featuresVarHandle.get(data, 0);
 	};
 
 	public static void setFeatures(MemorySegment data, int value) {
-		featuresVarHandle.set(data, value);
+		featuresVarHandle.set(data, 0, value);
 	};
 
 	public static int getEnterRingFd(MemorySegment data) {
-		return (int) enterRingFdVarHandle.get(data);
+		return (int) enterRingFdVarHandle.get(data, 0);
 	};
 
 	public static void setEnterRingFd(MemorySegment data, int value) {
-		enterRingFdVarHandle.set(data, value);
+		enterRingFdVarHandle.set(data, 0, value);
 	};
 
 	public static byte getIntFlags(MemorySegment data) {
-		return (byte) intFlagsVarHandle.get(data);
+		return (byte) intFlagsVarHandle.get(data, 0);
 	};
 
 	public static void setIntFlags(MemorySegment data, byte value) {
-		intFlagsVarHandle.set(data, value);
+		intFlagsVarHandle.set(data, 0, value);
 	};
 
 };

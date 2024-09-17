@@ -31,8 +31,8 @@ public class MemoryPlayground {
 			MemorySegment pointSegment = memorySession.allocate(pointLayout);
 			MemorySegment addrTest = memorySession.allocate(addrTestLayout);
 
-			xvarHandle.set(pointSegment, 3d);
-			yvarHandle.set(pointSegment, 4d);
+			xvarHandle.set(pointSegment, 0, 3d);
+			yvarHandle.set(pointSegment, 0, 4d);
 			System.out.println("Point 1 - " + pointSegment.toString());
 			System.out.println("Point 1x - " + xvarHandle.get(pointSegment));
 
@@ -40,12 +40,12 @@ public class MemoryPlayground {
 			MemorySegment start = lineSegment.asSlice(lineLayout.byteOffset(PathElement.groupElement("start")), pointLayout);
 			MemorySegment end = lineSegment.asSlice(lineLayout.byteOffset(PathElement.groupElement("end")), pointLayout);
 
-			xvarHandle.set(start, 1d);
-			yvarHandle.set(start, 2d);
-			xvarHandle.set(end, 5d);
-			yvarHandle.set(end, 6d);
+			xvarHandle.set(start, 0, 1d);
+			yvarHandle.set(start, 0, 2d);
+			xvarHandle.set(end, 0, 5d);
+			yvarHandle.set(end, 0, 6d);
 
-			addrPointvarHandle.set(addrTest, pointSegment);
+			addrPointvarHandle.set(addrTest, 0, pointSegment);
 
 			System.out.println("Line - " + lineSegment.toString());
 

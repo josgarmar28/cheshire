@@ -28,7 +28,7 @@ public final class io_uring_params {
 	private static VarHandle featuresVarHandle = layout.varHandle(PathElement.groupElement("features"));
 
 	public static int getSqEntries(MemorySegment data) {
-		return (int) sqEntriesVarHandle.get(data);
+		return (int) sqEntriesVarHandle.get(data, 0);
 	};
 
 	public static MemorySegment getSqEntriesSegment(MemorySegment data) {
@@ -37,11 +37,11 @@ public final class io_uring_params {
 	};
 
 	public static void setSqEntries(MemorySegment data, int value) {
-		sqEntriesVarHandle.set(data, value);
+		sqEntriesVarHandle.set(data, 0, value);
 	};
 
 	public static int getCqEntries(MemorySegment data) {
-		return (int) cqEntriesVarHandle.get(data);
+		return (int) cqEntriesVarHandle.get(data, 0);
 	};
 
 	public static MemorySegment getCqEntriesSegment(MemorySegment data) {
@@ -50,23 +50,23 @@ public final class io_uring_params {
 	};
 
 	public static void setCqEntries(MemorySegment data, int value) {
-		cqEntriesVarHandle.set(data, value);
+		cqEntriesVarHandle.set(data, 0, value);
 	};
 
 	public static int getFlags(MemorySegment data) {
-		return (int) flagsVarHandle.get(data);
+		return (int) flagsVarHandle.get(data, 0);
 	};
 
 	public static void setFlags(MemorySegment data, int value) {
-		flagsVarHandle.set(data, value);
+		flagsVarHandle.set(data, 0, value);
 	};
 
 	public static int getFeatures(MemorySegment data) {
-		return (int) featuresVarHandle.get(data);
+		return (int) featuresVarHandle.get(data, 0);
 	};
 
 	public static void setFeatures(MemorySegment data, int value) {
-		featuresVarHandle.set(data, value);
+		featuresVarHandle.set(data, 0, value);
 	};
 
 	public static MemorySegment getSqOffSegment(MemorySegment data) {
