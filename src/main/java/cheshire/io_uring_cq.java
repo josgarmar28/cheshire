@@ -61,7 +61,7 @@ public final class io_uring_cq {
 	};
 
 	public static void setKtail(MemorySegment data, MemorySegment value) {
-		ktailVarHandle.set(data, 0, value);
+		ktailVarHandle.setRelease(data, 0, value);
 	};
 
 	public static void setReleaseKtail(MemorySegment data, MemorySegment value) {
