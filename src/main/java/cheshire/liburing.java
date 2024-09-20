@@ -143,7 +143,7 @@ public final class liburing {
       long offset = io_uring_sqe.layout.byteSize();
       long index = ((sqeTail & ringMask) << shift) * offset;
 
-      MemorySegment sqes = io_uring_sq.getSqes(sq).reinterpret(index + offset); // TODO: enough?
+      MemorySegment sqes = io_uring_sq.getSqes(sq).reinterpret(index + offset);
       MemorySegment sqe = sqes.asSlice(index, offset);
       io_uring_sq.setSqeTail(sq, next);
       io_uring_initialize_sqe(sqe);
@@ -181,7 +181,7 @@ public final class liburing {
       MemorySegment cq = io_uring.getCqSegment(ring.segment);
       MemorySegment kheadSegment = io_uring_cq.getKhead(cq);
       int newValue = kheadSegment.get(ValueLayout.JAVA_INT, 0L) + nr;
-      // TODO: Add barrier
+      // Add barrier
       kheadSegment.set(ValueLayout.JAVA_INT, 0L, newValue);
       io_uring_cq.setReleaseKhead(cq, kheadSegment);
     }
@@ -189,7 +189,7 @@ public final class liburing {
 
   public static int io_uring_cq_ready(io_uring ring) {
     MemorySegment cq = io_uring.getCqSegment(ring.segment);
-    return (int) (io_uring_cq.getAcquireKtail(cq).get(ValueLayout.JAVA_INT, 0L)
+    return (io_uring_cq.getAcquireKtail(cq).get(ValueLayout.JAVA_INT, 0L)
         - io_uring_cq.getKhead(cq).get(ValueLayout.JAVA_INT, 0L));
   };
 

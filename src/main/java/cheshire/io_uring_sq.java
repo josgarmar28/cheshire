@@ -46,8 +46,8 @@ public final class io_uring_sq {
 		return utils.getIntReinterpreted(kheadVarHandle.get(data, 0));
 	};
 
-	public static MemorySegment getAcquireKhead(MemorySegment data) { // TODO: getAcquire
-		return utils.getIntReinterpreted(kheadVarHandle.get(data, 0));
+	public static MemorySegment getAcquireKhead(MemorySegment data) {
+		return utils.getIntReinterpreted(kheadVarHandle.getAcquire(data, 0));
 	};
 
 	public static void setKhead(MemorySegment data, MemorySegment value) {
@@ -62,8 +62,8 @@ public final class io_uring_sq {
 		ktailVarHandle.set(data, 0, value);
 	};
 
-	public static void setReleaseKtail(MemorySegment data, MemorySegment value) { // TODO: setRelease
-		ktailVarHandle.set(data, 0, value);
+	public static void setReleaseKtail(MemorySegment data, MemorySegment value) {
+		ktailVarHandle.setRelease(data, 0, value);
 	};
 
 	public static MemorySegment getKringMask(MemorySegment data) {

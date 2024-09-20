@@ -40,32 +40,32 @@ public final class io_uring_cq {
 		return utils.getIntReinterpreted(kheadVarHandle.get(data, 0));
 	};
 
-	public static MemorySegment getAcquireKhead(MemorySegment data) { // TODO: getAcquire
-		return utils.getIntReinterpreted(kheadVarHandle.get(data, 0));
+	public static MemorySegment getAcquireKhead(MemorySegment data) {
+		return utils.getIntReinterpreted(kheadVarHandle.getAcquire(data, 0));
 	};
 
 	public static void setKhead(MemorySegment data, MemorySegment value) {
 		kheadVarHandle.set(data, 0, value);
 	};
 
-	public static void setReleaseKhead(MemorySegment data, MemorySegment value) { // TODO: setRelease
-		kheadVarHandle.set(data, 0, value);
+	public static void setReleaseKhead(MemorySegment data, MemorySegment value) {
+		kheadVarHandle.setRelease(data, 0, value);
 	};
 
 	public static MemorySegment getKtail(MemorySegment data) {
 		return utils.getIntReinterpreted(ktailVarHandle.get(data, 0));
 	};
 
-	public static MemorySegment getAcquireKtail(MemorySegment data) { // TODO: getAcquire
-		return utils.getIntReinterpreted(ktailVarHandle.get(data, 0));
+	public static MemorySegment getAcquireKtail(MemorySegment data) {
+		return utils.getIntReinterpreted(ktailVarHandle.getAcquire(data, 0));
 	};
 
 	public static void setKtail(MemorySegment data, MemorySegment value) {
 		ktailVarHandle.set(data, 0, value);
 	};
 
-	public static void setReleaseKtail(MemorySegment data, MemorySegment value) {// TODO: setRelease
-		ktailVarHandle.set(data, 0, value);
+	public static void setReleaseKtail(MemorySegment data, MemorySegment value) {
+		ktailVarHandle.setRelease(data, 0, value);
 	};
 
 	public static MemorySegment getKringMask(MemorySegment data) {

@@ -6,8 +6,8 @@ ThisBuild / developers += tlGitHubDev("armanbilge", "Arman Bilge")
 ThisBuild / startYear := Some(2024)
 ThisBuild / tlSonatypeUseLegacyHost := false
 
-ThisBuild / tlJdkRelease := Some(22)
-ThisBuild / githubWorkflowJavaVersions := Seq(JavaSpec.temurin("22"))
+ThisBuild / tlJdkRelease := Some(23)
+ThisBuild / githubWorkflowJavaVersions := Seq(JavaSpec.temurin("23"))
 
 ThisBuild / githubWorkflowBuild ~= { steps =>
   steps.flatMap {
@@ -33,7 +33,6 @@ testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-v")
 // Java library
 crossPaths := false
 autoScalaLibrary := false
-javacOptions ++= Seq("--enable-preview", "--release", "22")
 Compile / compileOrder := CompileOrder.JavaThenScala
 Compile / doc / javacOptions -= "-Xlint:all"
 Test / doc / javacOptions -= "-Xlint:all"
