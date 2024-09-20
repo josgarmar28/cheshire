@@ -46,7 +46,7 @@ public final class io_uring_sq {
 		return utils.getIntReinterpreted(kheadVarHandle.get(data, 0));
 	};
 
-	public static MemorySegment getAcquireKhead(MemorySegment data) { // TODO: getAcquire
+	public static MemorySegment getAcquireKhead(MemorySegment data) {
 		return utils.getIntReinterpreted(kheadVarHandle.get(data, 0));
 	};
 
@@ -62,7 +62,7 @@ public final class io_uring_sq {
 		ktailVarHandle.set(data, 0, value);
 	};
 
-	public static void setReleaseKtail(MemorySegment data, MemorySegment value) { // TODO: setRelease
+	public static void setReleaseKtail(MemorySegment data, MemorySegment value) {
 		ktailVarHandle.set(data, 0, value);
 	};
 
