@@ -40,7 +40,7 @@ public final class io_uring_cq {
 		return utils.getIntReinterpreted(kheadVarHandle.get(data, 0));
 	};
 
-	public static MemorySegment getAcquireKhead(MemorySegment data) { // TODO: getAcquire
+	public static MemorySegment getAcquireKhead(MemorySegment data) {
 		return utils.getIntReinterpreted(kheadVarHandle.get(data, 0));
 	};
 
@@ -48,7 +48,7 @@ public final class io_uring_cq {
 		kheadVarHandle.set(data, 0, value);
 	};
 
-	public static void setReleaseKhead(MemorySegment data, MemorySegment value) { // TODO: setRelease
+	public static void setReleaseKhead(MemorySegment data, MemorySegment value) {
 		kheadVarHandle.set(data, 0, value);
 	};
 
@@ -56,7 +56,7 @@ public final class io_uring_cq {
 		return utils.getIntReinterpreted(ktailVarHandle.get(data, 0));
 	};
 
-	public static MemorySegment getAcquireKtail(MemorySegment data) { // TODO: getAcquire
+	public static MemorySegment getAcquireKtail(MemorySegment data) {
 		return utils.getIntReinterpreted(ktailVarHandle.get(data, 0));
 	};
 
@@ -64,7 +64,7 @@ public final class io_uring_cq {
 		ktailVarHandle.set(data, 0, value);
 	};
 
-	public static void setReleaseKtail(MemorySegment data, MemorySegment value) {// TODO: setRelease
+	public static void setReleaseKtail(MemorySegment data, MemorySegment value) {
 		ktailVarHandle.set(data, 0, value);
 	};
 

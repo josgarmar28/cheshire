@@ -2,6 +2,7 @@ package cheshire;
 
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
+import java.lang.invoke.VarHandle;
 
 class queue {
 
@@ -17,6 +18,7 @@ class queue {
 		// io_uring_smp_mb();
 		// std::atomic_thread_fence(std::memory_order_seq_cst);
 		// Review inside if -> uring_unlikely(IO_URING_READ_ONCE(*ring->sq.kflags)
+		VarHandle.acquireFence();
 		int kflags = io_uring_sq.getAcquireKflags(io_uring.getSqSegment(ring)).get(ValueLayout.JAVA_INT, 0L);
 		if ((kflags & constants.IORING_SQ_NEED_WAKEUP) != 0) {
 			flags.set(ValueLayout.JAVA_INT, 0L, (flags.get(ValueLayout.JAVA_INT, 0L) | constants.IORING_ENTER_SQ_WAKEUP));
@@ -142,15 +144,19 @@ class queue {
 				// Review workaround
 				ktail.set(ValueLayout.JAVA_INT, 0L, tail);
 				io_uring_sq.setReleaseKtail(sq, ktail);
+				VarHandle.releaseFence();
 			}
 		}
 		// return tail - IO_URING_READ_ONCE(*sq->khead);
-		return tail - io_uring_sq.getAcquireKhead(sq).get(ValueLayout.JAVA_INT, 0L);
+		VarHandle.acquireFence();
+		int khead = io_uring_sq.getAcquireKhead(sq).get(ValueLayout.JAVA_INT, 0L);
+		return tail - khead;
 	};
 
 	private static boolean cq_ring_needs_flush(MemorySegment ring) {
 		MemorySegment sq = io_uring.getSqSegment(ring);
 		// IO_URING_READ_ONCE(*ring->sq.kflags) // std::memory_order_relaxed
+		VarHandle.acquireFence();
 		int kflags = io_uring_sq.getAcquireKflags(sq).get(ValueLayout.JAVA_INT, 0L);
 		return ((kflags & (constants.IORING_SQ_CQ_OVERFLOW | constants.IORING_SQ_TASKRUN)) != 0);
 	};
